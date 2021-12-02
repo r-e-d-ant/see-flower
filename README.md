@@ -1,6 +1,6 @@
 # see-flower
 
-flowers selling website
+## flowers selling website
 
 This is a flowers selling website built with ```VueJs```, You can find ```HTML/CSS/JS``` version in this <a href="https://github.com/r-e-d-ant/see-flower-static-version" target="_blank">repo</a>.
 
