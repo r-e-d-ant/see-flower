@@ -1,0 +1,160 @@
+
+/* -- Font Family -- */
+/* -- Poppins and Fruktur -- */
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* -- default style reset -- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -- Variables -- */
+:root {
+    --primary-clr: #1f0e05;
+    --primary-clr-alt: #2c1407;
+    --second-clr: #dd6822;
+    --second-clr-alt: #f7daca;
+    --white-clr: #fefcfb;
+    --gray-clr: #f1f1f1;
+    --danger-clr: #c84242;
+}
+
+/* -- Base -- */
+li,
+ul {
+    list-style: none;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+a {
+    text-decoration: none;
+}
+/* -- -- -- */
+body {
+    color: var(--primary-clr);
+    background-color: var(--white-clr);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+/* -- sections styles -- */
+.section-title {
+    font-size: 1.4rem;
+    position: relative;
+    padding-bottom: .5rem;
+    margin: 1rem 0;
+}
+.section-title::before {
+    content: "";
+    background-color: var(--second-clr);
+    height: .2rem;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@media screen and (min-width: 550px) {
+    .section-title {
+        margin-top: 2rem;
+        margin-bottom: .5rem;
+    }
+}
+
+/* -- products styles -- */
+.product {
+    margin: 0 0 2rem 0;
+}
+@media screen and (min-width: 360px) {
+    .product-img {
+        width: 265px;
+        height: 194px;
+    }
+}
+@media screen and (min-width: 550px) {
+    .product {
+        display: flex;
+        margin: 2rem 0;
+    }
+    .products-info-container {
+        margin-left: 1rem;
+    }
+}
+@media screen and (min-width: 800px) {
+    .product {
+        display: flex;
+        flex-direction: column;
+    }
+    .products-info-container {
+        margin-left: 0;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .product {
+        display: flex;
+        flex-direction: row;
+    }
+    .products-info-container {
+        margin-left: 1rem;
+    }
+}
+/* -- */
+.product-title {
+    color: var(--primary-clr);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: .05rem;
+    transition: color 100ms;
+}
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+    .product-title {
+        margin-top: .5rem;
+    }
+}
+.product-title:hover {
+    color: var(--second-clr);
+}
+.product-description {
+    font-size: .9rem;
+    font-weight: 300;
+    letter-spacing: .002rem;
+    line-height: 1.7rem;
+}
+@media screen and (min-width: 360px) {
+    .product-description {
+        max-width: 17rem;
+    }
+}
+.product-rate {
+    width: 8rem;
+    margin-top: .7rem;
+}
+@media screen and (min-width: 550px) {
+    .product-title {
+        font-size: 1.4rem;
+        margin-bottom: .5rem;
+        transition: color 100ms;
+    }
+    .product-description {
+        font-size: .95rem;
+    }
+    .product-rate {
+        margin-top: 1.5rem;
+    }
+}
+
+/* ---- Buttons styles ---- */
+.cart-btns {
+    cursor: pointer;
+    background-color: var(--primary-clr-alt);
+    color: var(--white-clr);
+    border: none;
+}
+.cart-btns:hover {
+    background-color: var(--primary-clr);
+}

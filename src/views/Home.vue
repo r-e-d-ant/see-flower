@@ -1,18 +1,259 @@
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main">
+    <section class="section section-one">
+      <img src="https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fhook_flower.png?alt=media&token=ec4e7a76-8f72-40bf-b695-47fb2b3e4e54" alt="beautiful flower" class="hook-flower-img">
+        <div class="hook-text__container">
+          <h1 class="hook-title">The use of the word creatively</h1>
+            <p class="hook-text">
+              But, to creatively add value takes a more thorough understanding of the business environment in which you work
+            </p>
+        </div>
+    </section>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
+  components: {}
 }
 </script>
+<style scoped>
+
+/* -- hook section stylings --*/
+/* -- section one -- */
+.section-one {
+    display: flex;
+    position: relative;
+    background: linear-gradient(270deg, #F7DACA 0%, rgba(247, 218, 202, 0) 100%);
+}
+.hook-flower-img {
+    width: 100%;
+    height: 240px;
+}
+@media screen and (min-width: 364px) {
+    .hook-flower-img {
+        width: 360px;
+        height: 240px;
+    }
+}
+.hook-text__container {
+    position: absolute;
+    right: 0;
+    margin-top: 2rem;
+    padding: 0 .5rem;
+}
+@media screen and (min-width: 612px) {
+    .hook-text__container {
+        padding: 0 1rem;
+    }
+}
+.hook-title {
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    position: relative;
+    padding-bottom: .5rem;
+}
+.hook-title::before {
+    content: "";
+    background-color: var(--second-clr);
+    height: .2rem;
+    width: 13.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.hook-text {
+    max-width: 28rem;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    margin-top: 1.1rem;
+}
+@media screen and (max-width: 612px) {
+    .section-one {
+        background: transparent;
+    }
+    .section-one::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        opacity: .9;
+        background-color: var(--second-clr-alt);
+    }
+    .hook-text {
+        line-height: 1.7rem;
+        margin-top: .8rem;
+    }
+}
+
+/* -- home product  section stylings --*/
+/* -- section two -- */
+.section-two {
+    margin: 2.5rem 0;
+    padding: 0 .5rem;
+}
+@media screen and (min-width: 612px) {
+    .section-two {
+        padding: 0 1rem;
+    }
+}
+.section-two .section-title::before {
+    width: 6.7rem;
+}
+.products-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* -- section three -- */
+.section-three {
+    margin: 2.5rem 0;
+    background: linear-gradient(278.35deg, #DFDFE1 45.55%, rgba(223, 223, 225, 0) 100%);
+    position: relative;
+}
+
+@media screen and (max-width: 920px) {
+    .section-three::before {
+        content: "";
+        width: 100%;
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(278.35deg, #DFDFE1 45.55%, rgba(223, 223, 225, 0) 100%);
+    }
+}
+.product-info-container-show_case {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .2rem .5rem;
+}
+
+@media screen and (min-width: 612px) {
+    .product-info-container-show_case {
+        padding: 1rem;
+    }
+}
+.product-title-show_case {
+    margin-bottom: .5rem;
+    font-size: 1.21rem;
+    position: relative;
+    padding-bottom: .2rem;
+}
+.product-title-show_case::before {
+    content: "";
+    background-color: var(--second-clr);
+    height: .2rem;
+    width: 11.7rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.product-description-show_case {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: .002rem;
+    line-height: 1.5rem;
+    max-width: 30rem;
+}
+@media screen and (min-width: 550px) {
+    .product-title-show_case {
+        margin-bottom: .8rem;
+        padding-bottom: .5rem;
+        font-size: 1.5rem;
+    }
+    .product-title-show_case::before {
+        width: 14.8rem;
+    }
+    .product-description-show_case {
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+    }
+    .first_product-description-show_case {
+        margin-bottom: 1rem;
+    }
+    .product-info-container-show_case {
+        top: 2rem;
+    }
+}
+@media screen and (min-width: 550px) {
+    /* -- section three -- */
+    .section-three {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .product-img-show_case {
+        width: 612px;
+        height: 461px;
+    }
+}
+
+/* -- section four -- */
+.section-four {
+    display: none;
+    margin: 2.5rem 0;
+    padding: 1rem;
+}
+@media screen and (min-width: 1200px) {
+    .section-four {
+        display: block;
+    }
+}
+.product-ad-container {
+    display: flex;
+}
+.product-ad-info-container {
+    margin-left: 1rem;
+}
+.product-ad-title {
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    position: relative;
+    padding-bottom: .5rem;
+}
+.product-ad-title::before {
+    content: "";
+    background-color: var(--second-clr);
+    height: .2rem;
+    width: 14.8rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.product-ad-description {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: .002rem;
+    line-height: 1.5rem;
+    max-width: 30rem;
+    margin-top: 1.2rem;
+}
+.product-ad-description-1,
+.product-ad-description-2 {
+    margin-bottom: 1.2rem;
+}
+@media screen and (min-width: 580px) {
+    .product-ad-img {
+        width: 589px;
+        height: 407.06px;
+    }
+}
+
+/* -- section five -- */
+.section-five {
+    padding: 0 .5rem;
+    margin: 2.5rem 0;
+}
+.section-five .section-title::before {
+    width: 12rem;
+}
+@media screen and (min-width: 612px) {
+    .section-five {
+        padding: 0 1rem;
+    }
+}
+</style>
