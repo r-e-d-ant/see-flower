@@ -67,6 +67,11 @@ body {
 }
 
 /* -- products styles -- */
+.products-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .product {
     margin: 0 0 2rem 0;
 }

@@ -10,21 +10,51 @@
             </p>
         </div>
     </section>
+    <topRatedProductsComp :products="products"></topRatedProductsComp>
+
+    <hookProductComp :hookProducts="hookProducts"></hookProductComp>
+    <adProductsComp :adProducts="adProducts"></adProductsComp>
+    <weeklyTopRatedProductComp :weeklyTopRatedProducts="weeklyTopRatedProducts"></weeklyTopRatedProductComp>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
+import allProducts from "../composables/getProducts"
+import getProducts from "../firebase"
+
+import topRatedProductsComp from "../components/topRatedProductsComp"
+import adProductsComp from "../components/adProductsComp"
+import hookProductComp from "../components/hookProductComp"
+import weeklyTopRatedProductComp from "../components/weeklyTopRatedProductComp"
+import { onMounted, ref } from 'vue'
 
 export default {
-  name: 'Home',
-  components: {}
-}
-</script>
-<style scoped>
+    name: "Home",
+    components: { topRatedProductsComp, hookProductComp, adProductsComp, weeklyTopRatedProductComp },
+    setup() {
 
-/* -- hook section stylings --*/
-/* -- section one -- */
+        const ToplocalProducts = allProducts
+        // const topRatedProducts = products['top-rated-products']
+        const adProducts = ToplocalProducts['ad-products']
+        const hookProducts = ToplocalProducts['hook-product']
+        const weeklyTopRatedProducts = ToplocalProducts['weekly-top-rated']
+
+        const { products, error, load, addProduct } = getProducts()
+        load()
+
+        // onMounted(() => {
+        //     addProduct("Green white flower jar", "But, to creatively add value takes a more thorough understanding of the business environment in which you work", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_4.png?alt=media&token=1cbf60e7-7e53-4301-8af5-c2ff4f4fa7ec")
+        // })
+
+        return { products, ToplocalProducts, // topRatedProducts,
+        hookProducts, adProducts, weeklyTopRatedProducts }
+    },
+};
+</script>
+
+
+<style scoped>
 .section-one {
     display: flex;
     position: relative;
@@ -87,173 +117,6 @@ export default {
     .hook-text {
         line-height: 1.7rem;
         margin-top: .8rem;
-    }
-}
-
-/* -- home product  section stylings --*/
-/* -- section two -- */
-.section-two {
-    margin: 2.5rem 0;
-    padding: 0 .5rem;
-}
-@media screen and (min-width: 612px) {
-    .section-two {
-        padding: 0 1rem;
-    }
-}
-.section-two .section-title::before {
-    width: 6.7rem;
-}
-.products-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-/* -- section three -- */
-.section-three {
-    margin: 2.5rem 0;
-    background: linear-gradient(278.35deg, #DFDFE1 45.55%, rgba(223, 223, 225, 0) 100%);
-    position: relative;
-}
-
-@media screen and (max-width: 920px) {
-    .section-three::before {
-        content: "";
-        width: 100%;
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(278.35deg, #DFDFE1 45.55%, rgba(223, 223, 225, 0) 100%);
-    }
-}
-.product-info-container-show_case {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: .2rem .5rem;
-}
-
-@media screen and (min-width: 612px) {
-    .product-info-container-show_case {
-        padding: 1rem;
-    }
-}
-.product-title-show_case {
-    margin-bottom: .5rem;
-    font-size: 1.21rem;
-    position: relative;
-    padding-bottom: .2rem;
-}
-.product-title-show_case::before {
-    content: "";
-    background-color: var(--second-clr);
-    height: .2rem;
-    width: 11.7rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.product-description-show_case {
-    font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: .002rem;
-    line-height: 1.5rem;
-    max-width: 30rem;
-}
-@media screen and (min-width: 550px) {
-    .product-title-show_case {
-        margin-bottom: .8rem;
-        padding-bottom: .5rem;
-        font-size: 1.5rem;
-    }
-    .product-title-show_case::before {
-        width: 14.8rem;
-    }
-    .product-description-show_case {
-        font-size: 1.1rem;
-        line-height: 1.8rem;
-    }
-    .first_product-description-show_case {
-        margin-bottom: 1rem;
-    }
-    .product-info-container-show_case {
-        top: 2rem;
-    }
-}
-@media screen and (min-width: 550px) {
-    /* -- section three -- */
-    .section-three {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .product-img-show_case {
-        width: 612px;
-        height: 461px;
-    }
-}
-
-/* -- section four -- */
-.section-four {
-    display: none;
-    margin: 2.5rem 0;
-    padding: 1rem;
-}
-@media screen and (min-width: 1200px) {
-    .section-four {
-        display: block;
-    }
-}
-.product-ad-container {
-    display: flex;
-}
-.product-ad-info-container {
-    margin-left: 1rem;
-}
-.product-ad-title {
-    margin-bottom: .5rem;
-    font-size: 1.5rem;
-    position: relative;
-    padding-bottom: .5rem;
-}
-.product-ad-title::before {
-    content: "";
-    background-color: var(--second-clr);
-    height: .2rem;
-    width: 14.8rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.product-ad-description {
-    font-size: 1rem;
-    font-weight: 300;
-    letter-spacing: .002rem;
-    line-height: 1.5rem;
-    max-width: 30rem;
-    margin-top: 1.2rem;
-}
-.product-ad-description-1,
-.product-ad-description-2 {
-    margin-bottom: 1.2rem;
-}
-@media screen and (min-width: 580px) {
-    .product-ad-img {
-        width: 589px;
-        height: 407.06px;
-    }
-}
-
-/* -- section five -- */
-.section-five {
-    padding: 0 .5rem;
-    margin: 2.5rem 0;
-}
-.section-five .section-title::before {
-    width: 12rem;
-}
-@media screen and (min-width: 612px) {
-    .section-five {
-        padding: 0 1rem;
     }
 }
 </style>

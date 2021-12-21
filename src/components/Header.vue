@@ -85,7 +85,7 @@
         <div class="lower-header-desktop">
             <nav class="nav-bar">
                 <ul class="nav-lists">
-                    <li class="nav-item"><router-link class="nav-link" to="home">Home</router-link></li>
+                    <li class="nav-item"><router-link class="nav-link" to="/">Home</router-link></li>
                     <li class="nav-item"><router-link class="nav-link" to="products">Products</router-link></li>
                     <li class="nav-item"><router-link class="nav-link" to="about">About</router-link></li>
                 </ul>

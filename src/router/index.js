@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import About from '../views/About.vue'
 import InCart from '../views/InCart.vue'
+import Details from '../views/Details.vue'
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: '/in-cart',
     name: 'InCart',
     component: InCart
+  },
+  {
+    path: '/product/:id',
+    name: 'Details',
+    component: Details,
+    props: true
   }
 ]
 
