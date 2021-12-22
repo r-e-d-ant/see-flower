@@ -1,6 +1,5 @@
 <template>
-<main>
-    <section class="section section-one-about">
+<section class="section section-one-about">
             <div class="see-flower-history-container">
                 <div class="history-container history-one">
                     <img src="../assets/images/about_img_1.png" alt="house covered with flowers" class="history-img">
@@ -52,7 +51,6 @@
                 But, to creatively add value takes a more thorough understanding of the business environment in which you work But, to creatively add value takes a more thorough understanding of the business environment in which you work
             </p>
         </section>
-</main>
 </template>
 
 <style scoped>
@@ -131,6 +129,7 @@
     white-space: pre-line;
     font-size: 1rem;
     font-weight: 300;
+    margin-top: 1.5rem;
 }
 @media screen and (min-width: 768px) {
     .history-container {

@@ -1,7 +1,6 @@
 
 <template>
-  <div class="main">
-    <section class="section section-one">
+  <section class="section section-one">
       <img src="https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fhook_flower.png?alt=media&token=ec4e7a76-8f72-40bf-b695-47fb2b3e4e54" alt="beautiful flower" class="hook-flower-img">
         <div class="hook-text__container">
           <h1 class="hook-title">The use of the word creatively</h1>
@@ -16,7 +15,6 @@
     <adProductsComp :adProducts="adProducts"></adProductsComp>
 
     <weeklyTopRatedProductComp :weeklyTopRatedProducts="weeklyTopRatedProducts"></weeklyTopRatedProductComp>
-  </div>
 </template>
 
 <script>
@@ -43,7 +41,12 @@ export default {
         load("weeklyProducts", weeklyTopRatedProducts)
 
         // onMounted(() => {
-        //       addProduct("Skinny flower", "But, to creatively add value takes a more thorough understanding of the business environment in which you work", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_6.png?alt=media&token=637efece-2920-4a43-aa6f-0e6266c15af8")
+        //       addProduct(
+        //           "Whitish roses",
+        //           "But, to creatively add value takes a more thorough understanding of the business environment in which you work",
+        //           "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6",
+        //           "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_12.png?alt=media&token=525667f2-37de-4caa-9fb2-4d052072c931"
+        //       )
         // })
         
         return { topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts }

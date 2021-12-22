@@ -30,6 +30,8 @@ const getProducts = () => {
     const adProducts = VueRef([])
     const weeklyTopRatedProducts = VueRef([])
 
+    const allProducts = VueRef([])
+
     // Store queryed one product for details here
     const oneProduct = VueRef(null)
 
@@ -55,11 +57,11 @@ const getProducts = () => {
       })
     }
 
-    // ===================================
+    // ====================================
     // function to add product to firebase
     // const addProduct = (name, description, rate, image) => {
     //   const newPostProductKey = push(child(ref(db), 'products')).key;
-    //   set(ref(db, 'products/category/' + newPostProductKey), {
+    //   set(ref(db, 'products/allProducts/' + newPostProductKey), {
     //     id: newPostProductKey,
     //     name: name,
     //     description: description,
@@ -68,10 +70,10 @@ const getProducts = () => {
     //     review: [{"username": "John Doe", "message": "I love the products"}]
     //   })
     // }
-    // ===================================
+    // ====================================
 
     return {
-      load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts,
+      load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, allProducts,
       getOneProduct, oneProduct,
       // addProduct,
       error

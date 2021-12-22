@@ -1,5 +1,5 @@
 <template>
-    <section class="section section-two">
+ <section class="section section-two">
         <h2 class="section-title">Top rated products</h2>
         <div class="products-container" v-if="topRatedProducts">
                 <div class="product product-one" v-for="topRatedProduct in topRatedProducts" :key="topRatedProduct.id">
@@ -19,7 +19,7 @@
 
 export default {
     props: ['topRatedProducts'],
-    setup(props) {}
+    setup() {}
 }
 </script>
 
