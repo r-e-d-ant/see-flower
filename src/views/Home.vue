@@ -10,45 +10,43 @@
             </p>
         </div>
     </section>
-    <topRatedProductsComp :products="products"></topRatedProductsComp>
+    <topRatedProductsComp :topRatedProducts="topRatedProducts"></topRatedProductsComp>
 
     <hookProductComp :hookProducts="hookProducts"></hookProductComp>
     <adProductsComp :adProducts="adProducts"></adProductsComp>
+
     <weeklyTopRatedProductComp :weeklyTopRatedProducts="weeklyTopRatedProducts"></weeklyTopRatedProductComp>
   </div>
 </template>
 
 <script>
 
-import allProducts from "../composables/getProducts"
 import getProducts from "../firebase"
 
 import topRatedProductsComp from "../components/topRatedProductsComp"
 import adProductsComp from "../components/adProductsComp"
 import hookProductComp from "../components/hookProductComp"
 import weeklyTopRatedProductComp from "../components/weeklyTopRatedProductComp"
-import { onMounted, ref } from 'vue'
+
+import { onMounted } from 'vue'
 
 export default {
     name: "Home",
     components: { topRatedProductsComp, hookProductComp, adProductsComp, weeklyTopRatedProductComp },
     setup() {
+        const { load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, error } = getProducts()
 
-        const ToplocalProducts = allProducts
-        // const topRatedProducts = products['top-rated-products']
-        const adProducts = ToplocalProducts['ad-products']
-        const hookProducts = ToplocalProducts['hook-product']
-        const weeklyTopRatedProducts = ToplocalProducts['weekly-top-rated']
-
-        const { products, error, load, addProduct } = getProducts()
-        load()
+        // load data
+        load("topRatedProducts", topRatedProducts)
+        load("hookProducts", hookProducts)
+        load("adProducts", adProducts)
+        load("weeklyProducts", weeklyTopRatedProducts)
 
         // onMounted(() => {
-        //     addProduct("Green white flower jar", "But, to creatively add value takes a more thorough understanding of the business environment in which you work", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_4.png?alt=media&token=1cbf60e7-7e53-4301-8af5-c2ff4f4fa7ec")
+        //       addProduct("Skinny flower", "But, to creatively add value takes a more thorough understanding of the business environment in which you work", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6", "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_6.png?alt=media&token=637efece-2920-4a43-aa6f-0e6266c15af8")
         // })
-
-        return { products, ToplocalProducts, // topRatedProducts,
-        hookProducts, adProducts, weeklyTopRatedProducts }
+        
+        return { topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts }
     },
 };
 </script>

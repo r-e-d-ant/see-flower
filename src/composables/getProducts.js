@@ -4,7 +4,7 @@ const allProducts = {
         "product-id": 1,
         "product-description" : "But, to creatively add value takes a more thorough understanding of the business environment in which you work In the business world, we hear the phrase bottom line all the time",
         "product-image" : "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fmiddle_hook.png?alt=media&token=d10f0cff-eb80-4740-be32-7cd5f86b494c",
-        "product-name" : "The use of the word creatively",
+        "product-name" : "Kilimandjaro shiny flowers",
         "product-rate" : "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6"
     },
     "ad-products" : [

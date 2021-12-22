@@ -1,14 +1,17 @@
 
 <template>
     <!-- section three -->
-        <section class="section section-three">
+        <section class="section section-three" v-for="hookProduct in hookProducts" :key="hookProduct.id">
             <div class="product-info-container-show_case">
-                <h3 class="product-title-show_case">{{ hookProducts['product-name'] }}</h3>
-                <p class="product-description-show_case">{{ hookProducts['product-description'] }}</p>
-                <img :src="hookProducts['product-rate']" alt="product rate" class="product-rate">
+                <router-link class="product-title-link" :to="{ name: 'Details', params: { id: hookProduct.id, category: 'hookProducts' }}">
+                    <h3 class="product-title-show_case product-title">{{ hookProduct.name }}</h3>
+                </router-link>
+
+                <p class="product-description-show_case">{{ hookProduct.description }}</p>
+                <img :src="hookProduct.rate" alt="product rate" class="product-rate">
             </div>
 
-            <img :src="hookProducts['product-image']" alt="product show case" class="product-img-show_case">
+            <img :src="hookProduct.image" alt="product show case" class="product-img-show_case">
         </section>
 </template>
 
