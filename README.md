@@ -6,6 +6,10 @@ This is a flowers selling website built with ```VueJs``` and ```Firebase```, You
 
 Check Figma designs of these website <a href="https://www.figma.com/file/jPYZsnxVWVzBLAybrjFq92/SeeFlower?node-id=0%3A1" target="_blank" title="See Flower website figma designs">here</a>
 
+## ScreenShot
+![Screen Shot 2021-12-23 at 12 50 49 PM](https://user-images.githubusercontent.com/66163130/147236610-5034b366-a520-4de8-983b-7b1b59c92a4a.png)
+
+
 ## Figma Designs ScreenShots
 * Design
 ![design](https://user-images.githubusercontent.com/66163130/143675838-99d06995-a20c-4b15-9576-4db2f0aed61e.png)
