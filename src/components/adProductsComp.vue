@@ -3,7 +3,7 @@
         <!-- section four -->
         <section class="section section-four">
             <div class="product-ad-container" v-for="adProduct in adProducts" :key="adProduct.id">
-                <img :src="adProduct.image" alt="product ad" class="product-ad-img">
+                <img :src="adProduct.image" :alt="adProduct.name" class="product-ad-img">
                 <div class="product-ad-info-container">
                     <router-link class="product-title-link" :to="{ name: 'Details', params: { id: adProduct.id, category: 'adProducts' }}">
                         <h3 class="product-ad-title product-title">{{ adProduct.name }}</h3>
@@ -61,7 +61,7 @@ export default {
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: .002rem;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     max-width: 30rem;
     margin-top: 1.2rem;
 }
