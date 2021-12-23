@@ -7,8 +7,8 @@
                 <div class="left-side-links">
                     <!-- menu icons -->
                     <div class="menu-icons">
-                        <i class="bx bx-menu open-menu-icon"></i>
-                        <i class="bx bx-x close-menu-icon"></i>
+                        <i class="bx bx-menu open-menu-icon" ref="openMenuIcon" @click="openMenuFunc"></i>
+                        <i class="bx bx-x close-menu-icon" ref="closeMenuIcon" @click="closeMenuFunc"></i>
                     </div>
 
                     <!-- * View Phone | Desktop * -->
@@ -83,7 +83,7 @@
 
         <!-- lower header -->
         <div class="lower-header-desktop">
-            <nav class="nav-bar">
+            <nav class="nav-bar" ref="navBar">
                 <ul class="nav-lists">
                     <li class="nav-item"><router-link class="nav-link" to="/">Home</router-link></li>
                     <li class="nav-item"><router-link class="nav-link" to="products">Products</router-link></li>
@@ -99,14 +99,42 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import getProducts from "../firebase"
+// import { openMenuFunc, closeMenuFunc } from "../composables/navBar"
 
 export default {
-    setup() {
+    props: ['main'],
+    setup(props) {
+        const navBar = ref(null)
+        const openMenuIcon = ref(null)
+        const closeMenuIcon = ref(null)
+        
+        const openMenuFunc = () => {
+            if(!navBar.value.classList.contains('show-nav-bar')) {
+                navBar.value.classList.add('show-nav-bar');
+                openMenuIcon.value.classList.add('hide-open-menu__icon');
+                closeMenuIcon.value.classList.add('show-close-menu__icon');
+
+                props.main.classList.add('hide-background')
+            }
+        }
+
+        const closeMenuFunc = () => {
+            if(navBar.value.classList.contains('show-nav-bar')) {
+                navBar.value.classList.remove('show-nav-bar');
+                openMenuIcon.value.classList.remove('hide-open-menu__icon');
+                closeMenuIcon.value.classList.remove('show-close-menu__icon');
+                
+                props.main.classList.remove('hide-background')
+            }
+        }
+
         const { load, inCartProducts } = getProducts()
+        // load products
         load("inCart", inCartProducts)
 
-        return { inCartProducts }
+        return { inCartProducts, navBar, openMenuIcon, closeMenuIcon, openMenuFunc, closeMenuFunc }
     },
 }
 </script>
@@ -413,17 +441,6 @@ header {
     .nav-lists {
         flex-direction: row;
     }
-}
-.hide-background {
-    position: relative;
-}
-.hide-background::before {
-    z-index: 2;
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    background-color: #2c14079d;
 }
 .nav-item {
     margin-right: 2rem;
