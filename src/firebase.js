@@ -77,25 +77,9 @@ const getProducts = () => {
       remove(ref(db, "inCart/"+deleteThis))
     }
 
-    // ====================================
-    // function to add product to firebase
-    // const addProduct = (name, description, rate, image) => {
-    //   const newPostProductKey = push(child(ref(db), 'products')).key;
-    //   set(ref(db, 'products/category' + newPostProductKey), {
-    //     id: newPostProductKey,
-    //     name: name,
-    //     description: description,
-    //     image: image,
-    //     rate: rate,
-    //     review: [{"username": "John Doe", "message": "I love the products"}]
-    //   })
-    // }
-    // ====================================
-
     return {
       load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, allProducts,
       getOneProduct, oneProduct, inCartProducts,
-      // addProduct,
       addToCart, removeFromCart,
       error
     }

@@ -26,28 +26,17 @@ import adProductsComp from "../components/adProductsComp"
 import hookProductComp from "../components/hookProductComp"
 import weeklyTopRatedProductComp from "../components/weeklyTopRatedProductComp"
 
-import { onMounted } from 'vue'
-
 export default {
     name: "Home",
     components: { topRatedProductsComp, hookProductComp, adProductsComp, weeklyTopRatedProductComp },
     setup() {
-        const { load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, error } = getProducts()
+        const { load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts } = getProducts()
 
         // load data
         load("products/topRatedProducts", topRatedProducts)
         load("products/hookProducts", hookProducts)
         load("products/adProducts", adProducts)
         load("products/weeklyProducts", weeklyTopRatedProducts)
-
-        // onMounted(() => {
-        //       addProduct(
-        //           "Whitish roses",
-        //           "But, to creatively add value takes a more thorough understanding of the business environment in which you work",
-        //           "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Frate.svg?alt=media&token=f0db1a98-ecbe-4284-81d2-1d79cbfc34f6",
-        //           "https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fproduct-pics%2Fproduct_pic_12.png?alt=media&token=525667f2-37de-4caa-9fb2-4d052072c931"
-        //       )
-        // })
         
         return { topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts }
     },
