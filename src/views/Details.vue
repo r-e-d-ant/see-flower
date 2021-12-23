@@ -5,7 +5,7 @@
         <div class="to-cart-product-infos">
             <h2 class="to-cart-product-title">{{ oneProduct.name }}</h2>
             <p class="to-cart-product-description">{{ oneProduct.description }}</p>
-            <button class="add-to-cart-btn cart-btns">Add To Cart</button>
+            <button class="add-to-cart-btn cart-btns" @click="addToCartFunc(oneProduct.name, oneProduct.image, oneProduct.price, oneProduct.id)">Add To Cart</button>
         </div>
     </section>
     
@@ -30,7 +30,9 @@ export default {
     props: ['id', 'category'],
     components: { userReview, makeReview },
     setup(props) {
+        const { getOneProduct, oneProduct, addToCart } = getProducts()
 
+        /* ------------------------------- */
         const showMakeReview = ref(false)
         const showReviews = ref(true)
 
@@ -43,11 +45,14 @@ export default {
             showReviews.value = true
         }
 
-        const { getOneProduct, oneProduct } = getProducts()
+        const addToCartFunc = (name, image, price, id) => {
+            addToCart(name, image, price, id)
+        }
+
         onMounted(() => {
             getOneProduct(props.category, props.id)
         })
-        return { oneProduct, showMakeReviewComp, showMakeReview, showReviewsComp, showReviews }
+        return { oneProduct, showMakeReviewComp, showMakeReview, showReviewsComp, showReviews, addToCartFunc }
     },
 }
 </script>

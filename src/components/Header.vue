@@ -62,7 +62,7 @@
                     <div class="cart-icon-container">
                         <i class='bx bx-cart cart-icon'></i>
                         <span class="grouped-link">
-                            <router-link class="upper-text-link" to="in-cart">2 In</router-link>
+                            <router-link class="upper-text-link" to="in-cart" v-if="inCartProducts">{{ Object.keys(inCartProducts).length }} In</router-link>
                             <router-link class="lower-text-link" to="in-cart">Cart</router-link>
                         </span>
                     </div>
@@ -97,6 +97,20 @@
         </div>
     </header>
 </template>
+
+<script>
+import getProducts from "../firebase"
+
+export default {
+    setup() {
+        const { load, inCartProducts } = getProducts()
+        load("inCart", inCartProducts)
+        console.log(inCartProducts.value)
+
+        return { inCartProducts }
+    },
+}
+</script>
 
 <style scoped>
 

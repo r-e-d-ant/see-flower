@@ -35,10 +35,10 @@ export default {
         const { load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, error } = getProducts()
 
         // load data
-        load("topRatedProducts", topRatedProducts)
-        load("hookProducts", hookProducts)
-        load("adProducts", adProducts)
-        load("weeklyProducts", weeklyTopRatedProducts)
+        load("products/topRatedProducts", topRatedProducts)
+        load("products/hookProducts", hookProducts)
+        load("products/adProducts", adProducts)
+        load("products/weeklyProducts", weeklyTopRatedProducts)
 
         // onMounted(() => {
         //       addProduct(

@@ -36,8 +36,8 @@ export default {
         
         // get data on mounted
         onMounted(() => {
-            load("weeklyProducts", weeklyTopRatedProducts)
-            load("allProducts", allProducts)
+            load("products/weeklyProducts", weeklyTopRatedProducts)
+            load("products/allProducts", allProducts)
         })
 
         return { allProducts, weeklyTopRatedProducts }
