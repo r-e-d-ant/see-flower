@@ -1,12 +1,8 @@
-
-# •••••• Website Under development •••••••••
-
-
 # see-flower
 ## See it <a href="https://nifty-johnson-a8dc71.netlify.app">Live</a>
 ## flowers selling website
 
-This is a flowers selling website built with ```VueJs```, You can find ```HTML/CSS/JS``` version in this <a href="https://github.com/r-e-d-ant/see-flower-static-version" target="_blank">repo</a>.
+This is a flowers selling website built with ```VueJs``` and ```Firebase```, You can find ```HTML/CSS/JS``` version in this <a href="https://github.com/r-e-d-ant/see-flower-static-version" target="_blank">repo</a>.
 
 Check Figma designs of these website <a href="https://www.figma.com/file/jPYZsnxVWVzBLAybrjFq92/SeeFlower?node-id=0%3A1" target="_blank" title="See Flower website figma designs">here</a>
 
