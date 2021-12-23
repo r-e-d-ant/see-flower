@@ -2,14 +2,16 @@
 <template>
         <!-- section four -->
         <section class="section section-four">
-            <div class="product-ad-container" v-for="adProduct in adProducts" :key="adProduct['product-id']">
-                <img :src="adProduct['product-image']" alt="product ad" class="product-ad-img">
+            <div class="product-ad-container" v-for="adProduct in adProducts" :key="adProduct.id">
+                <img :src="adProduct.image" :alt="adProduct.name" class="product-ad-img">
                 <div class="product-ad-info-container">
-                    <h3 class="product-ad-title">{{ adProduct['product-name'] }}</h3>
+                    <router-link class="product-title-link" :to="{ name: 'Details', params: { id: adProduct.id, category: 'adProducts' }}">
+                        <h3 class="product-ad-title product-title">{{ adProduct.name }}</h3>
+                    </router-link>
                     <ul class="product-ad-description-container">
-                        <li class="product-ad-description product-ad-description-1">{{ adProduct['product-description'] }}</li>
+                        <li class="product-ad-description product-ad-description-1">{{ adProduct.description }}</li>
                     </ul>
-                    <img :src="adProduct['product-rate']" alt="product rate" class="product-rate">
+                    <img :src="adProduct.rate" alt="product rate" class="product-rate">
                 </div>
             </div>
         </section>
@@ -59,7 +61,7 @@ export default {
     font-size: 1rem;
     font-weight: 300;
     letter-spacing: .002rem;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
     max-width: 30rem;
     margin-top: 1.2rem;
 }

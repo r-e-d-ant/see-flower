@@ -27,7 +27,7 @@ const routes = [
     component: InCart
   },
   {
-    path: '/product/:id',
+    path: '/:id',
     name: 'Details',
     component: Details,
     props: true

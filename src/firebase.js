@@ -3,7 +3,7 @@ import { ref as VueRef } from 'vue'
 import { initializeApp } from 'firebase/app'
 import {
     getDatabase, ref, onValue,
-    set, get, push, child
+    set, push, child, remove
 } from 'firebase/database'
 
 // Configs
@@ -23,73 +23,66 @@ initializeApp(firebaseConfig);
 // init services
 const db = getDatabase()
 
-//  --------- get top rated products --------
+// Main funtion to get products
 const getProducts = () => {
-    const products = VueRef([])
-    const oneProduct = VueRef(null)
-    const error = VueRef(null)
-    
-    const load = async() => {
-        const allProducts = ref(db, 'products/');
+    const topRatedProducts = VueRef([])
+    const hookProducts = VueRef([])
+    const adProducts = VueRef([])
+    const weeklyTopRatedProducts = VueRef([])
 
-        onValue(allProducts, (snapshot) => {
-          const data = snapshot.val();
-          products.value = { ...data }
-        })
+    const inCartProducts = VueRef(null)
+
+    const allProducts = VueRef([])
+
+    // Store queryed one product for details here
+    const oneProduct = VueRef(null)
+
+    // Store any occured error
+    const error = VueRef(null)
+
+    // const load data function
+    const load = async (category, storeIn) => {
+      const loadFrom = ref(db, category)
+
+      onValue(loadFrom, (snapshot) => {
+        const data = snapshot.val()
+        storeIn.value = { ...data }
+      })
     }
-    
-    const getOneProduct = (productId) => {
-      const getProduct = ref(db, 'products/' + productId);
+
+    // get one product
+    const getOneProduct = (category, productId) => {
+      const getProduct = ref(db, 'products/' + category +"/"+ productId);
       onValue(getProduct, (snapshot) => {
         const data = snapshot.val()
         oneProduct.value = { ...data }
       })
     }
-    
-    const addProduct = (name, description, rate, image) => {
-      const newPostProductKey = push(child(ref(db), 'products')).key;
-      set(ref(db, 'products/' + newPostProductKey), {
+
+    // add product to cart
+    const addToCart = (name, image, price, productID) => {
+      const newInCartProductKey = push(child(ref(db), "inCart")).key;
+      set(ref(db, "inCart/" + newInCartProductKey), {
+        id: productID,
+        cartId: newInCartProductKey,
         name: name,
-        description: description,
-        image: image,
-        rate: rate
+        price: price,
+        image: image
       })
     }
-    return { products, error, load, addProduct, getOneProduct, oneProduct }
+
+    // remove product from cart
+    const removeFromCart = (deleteThis) => {
+      console.log("Clicked")
+      remove(ref(db, "inCart/"+deleteThis))
+    }
+
+    return {
+      load, topRatedProducts, hookProducts, adProducts, weeklyTopRatedProducts, allProducts,
+      getOneProduct, oneProduct, inCartProducts,
+      addToCart, removeFromCart,
+      error
+    }
 }
 
 export default getProducts
-
-
-
-
-
-
-
-
-
-//  --------- get ads products --------
-// const getAdProducts = () => {
-//     const adProducts = VueRef([])
-    
-//     const loadAd = () => {
-//         const allAdProducts = ref(db, 'products/ad-products/');
-
-//         get(allAdProducts)
-//         .then((snapshot) => {
-//           if(snapshot) {
-//               const data = snapshot.val()
-//               adProducts.value = data
-//           } else {
-//             alert("No data Found")
-//           }
-//         })
-//         .catch((err) => {
-//           console.log(err.message)
-//         })
-//     }
-//     return { adProducts, loadAd }
-// }
-
-// export default { getTopRatedProducts, getAdProducts }
-

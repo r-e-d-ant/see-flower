@@ -4,12 +4,14 @@
         <section class="section section-five">
             <h2 class="section-title">Weekly top rated products</h2>
             <div class="weekly-products-container products-container">
-                <div class="product" v-for="weeklyTopRatedProduct in weeklyTopRatedProducts" :key="weeklyTopRatedProduct['product-id']">
-                    <img :src="weeklyTopRatedProduct['product-image']" alt="product image" class="product-img">
+                <div class="product" v-for="weeklyTopRatedProduct in weeklyTopRatedProducts" :key="weeklyTopRatedProduct.id">
+                    <img :src="weeklyTopRatedProduct.image" alt="product image" class="product-img">
                     <div class="products-info-container">
-                        <a href="#" class="product-title-link"><h3 class="product-title">{{ weeklyTopRatedProduct['product-name'] }}</h3></a>
-                        <p class="product-description">{{ weeklyTopRatedProduct['product-description'] }}</p>
-                        <img :src="weeklyTopRatedProduct['product-rate']" alt="product rate" class="product-rate">
+                        <router-link class="product-title-link" :to="{ name: 'Details', params: { id: weeklyTopRatedProduct.id, category: 'weeklyProducts' }}">
+                            <h3 class="product-title"> {{ weeklyTopRatedProduct.name }} </h3>
+                        </router-link>
+                        <p class="product-description">{{ weeklyTopRatedProduct.description }}</p>
+                        <img :src="weeklyTopRatedProduct.rate" alt="product rate" class="product-rate">
                     </div>
                 </div>
             </div>

@@ -1,15 +1,15 @@
 <template>
-    <section class="section section-two">
+ <section class="section section-two">
         <h2 class="section-title">Top rated products</h2>
-        <div class="products-container" v-if="products">
-                <div class="product product-one" v-for="topRatedProduct in products" :key="topRatedProduct.id">
-                    <img :src="topRatedProduct['image']" alt="product image" class="product-img">
+        <div class="products-container" v-if="topRatedProducts">
+                <div class="product product-one" v-for="topRatedProduct in topRatedProducts" :key="topRatedProduct.id">
+                    <img :src="topRatedProduct.image" alt="product image" class="product-img">
                     <div class="products-info-container">
-                        <router-link class="product-title-link" :to="{ name: 'Details', params: { id: topRatedProduct.id }}">
-                            <h3 class="product-title"> {{ topRatedProduct['name'] }} </h3>
+                        <router-link class="product-title-link" :to="{ name: 'Details', params: { id: topRatedProduct.id, category: 'topRatedProducts'}}">
+                            <h3 class="product-title"> {{ topRatedProduct.name }} </h3>
                         </router-link>
-                        <p class="product-description">{{ topRatedProduct['description'] }}</p>
-                        <img :src="topRatedProduct['rate']" alt="product rate" class="product-rate">
+                        <p class="product-description">{{ topRatedProduct.description }}</p>
+                        <img :src="topRatedProduct.rate" alt="product rate" class="product-rate">
                     </div>
                 </div>
             </div>
@@ -18,8 +18,8 @@
 <script>
 
 export default {
-    props: ['products'],
-    setup(props) {}
+    props: ['topRatedProducts'],
+    setup() {}
 }
 </script>
 
