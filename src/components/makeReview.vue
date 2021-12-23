@@ -2,7 +2,7 @@
 <div class="reviews-container">
                 <div class="review-make_review-container">
                     <div class="make-review">
-                        <form class="review-form">
+                        <form class="review-form" @submit.prevent="handleSubmitReview">
                             <textarea cols="30" rows="10" class="review-input"></textarea>
                             <button class="submit-review-btn cart-btns">Submit</button>
                         </form>
@@ -10,6 +10,17 @@
                 </div>
             </div>
 </template>
+
+<script>
+export default {
+    setup() {
+        const handleSubmitReview = () => {
+            console.log("Not submitted")
+        }
+        return { handleSubmitReview }
+    },
+}
+</script>
 
 <style scoped>
 /* --- section two --- */

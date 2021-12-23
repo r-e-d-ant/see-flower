@@ -1,5 +1,5 @@
 <template>
-     <section class="section-one-in_cart">
+     <section class="section-one-in_cart" v-if="inCartProducts && Object.keys(inCartProducts).length">
             <div class="carts-container">
                 <!-- cart one -->
                 <div class="cart" v-for="inCartProduct in inCartProducts" :key="inCartProduct.id">
@@ -8,10 +8,10 @@
                         <div class="cart-product-info">
                             <h2 class="cart-product-title">{{ inCartProduct.name }}</h2>
                             <span class="cart-product-price">{{ inCartProduct.price }} $</span>
-                            <button class="remove-cart-btn cart-btns" @click="removeFromCart">remove cart</button>
+                            <button class="remove-cart-btn cart-btns" @click="removeFromCart(inCartProduct.cartId)">remove cart</button>
                         </div>
                     </div>
-                    <i class="bx bx-trash delete-cart-icon" title="delete cart"></i>
+                    <i class="bx bx-trash delete-cart-icon" title="delete cart" @click="removeFromCart(inCartProduct.cartId)"></i>
                 </div>
             </div>
 
@@ -21,22 +21,33 @@
                         <img src="https://firebasestorage.googleapis.com/v0/b/see-flower.appspot.com/o/see-flower-images%2Fcart-total.svg?alt=media&token=090e12c3-727c-4caf-98ce-f50ffd9462e6" alt="" class="filled-cart-icon">
                         <div class="cart-product-info">
                             <h2 class="cart-product-title">Total</h2>
-                            <span class="in-cart-total">0$</span>
+                            <span class="in-cart-total">0 $</span>
                         </div>
                     </div>
                     <button class="checkout-btn cart-btns">CHECKOUT</button>
                 </div>
             </div>
         </section>
+     <section class="section-one-in_cart" v-else>
+         <div class="empty-cart-container">
+             <h2 class="empty-cart-info">The cart is empty!</h2>
+             <i class="bx bx-cart"></i>
+         </div>
+     </section>
+
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
 import getProducts from "../firebase"
 
 export default {
     setup() {
         const { load, inCartProducts, removeFromCart } = getProducts()
-        load("inCart", inCartProducts)
+
+        onMounted(() => {
+            load("inCart", inCartProducts)
+        })
 
         return { inCartProducts, removeFromCart }
     },
@@ -200,5 +211,23 @@ export default {
     .remove-cart-btn {
         display: none;
     }
+}
+
+/* ------- */
+.empty-cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.empty-cart-container i {
+    font-size: 6rem;
+    margin-top: 2rem;
+    color: var(--primary-clr-alt);
+}
+
+.empty-cart-info {
+    color: var(--primary-clr-alt);
+    font-size: 2.5rem;
 }
 </style>

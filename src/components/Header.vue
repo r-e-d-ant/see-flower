@@ -105,7 +105,6 @@ export default {
     setup() {
         const { load, inCartProducts } = getProducts()
         load("inCart", inCartProducts)
-        console.log(inCartProducts.value)
 
         return { inCartProducts }
     },

@@ -64,6 +64,7 @@ const getProducts = () => {
       const newInCartProductKey = push(child(ref(db), "inCart")).key;
       set(ref(db, "inCart/" + newInCartProductKey), {
         id: productID,
+        cartId: newInCartProductKey,
         name: name,
         price: price,
         image: image
@@ -71,9 +72,9 @@ const getProducts = () => {
     }
 
     // remove product from cart
-    const removeFromCart = () => {
+    const removeFromCart = (deleteThis) => {
       console.log("Clicked")
-      remove(ref(db, "inCart/-Mr_MqfpdSU7GaqVEJcw"))
+      remove(ref(db, "inCart/"+deleteThis))
     }
 
     // ====================================
