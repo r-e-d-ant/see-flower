@@ -37,7 +37,7 @@ const getProducts = () => {
     // Store queryed one product for details here
     const oneProduct = VueRef(null)
 
-    // Store any occured
+    // Store any occured error
     const error = VueRef(null)
 
     // const load data function
